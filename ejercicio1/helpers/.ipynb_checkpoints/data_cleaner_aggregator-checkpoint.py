@@ -4,10 +4,30 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("prueba_técnica")
 
 class DataCleanerAggregator:
+    """
+    Clase que contiene las transformaciones necesarias para generar un dataframe final que cumpla
+    con las reglas de negocio requeridas. 
+
+    Métodos
+    final_sales_details() : Selecciona unicamente los campos necesarios para el consumo de la información,
+                            genera los casteos necesarios para estandarizar la información y genera el campo
+                            con detalles de venta por cliente.
+    """
     def __init__(self, df=None):
+        """
+        Constructor de la clase
+
+        Args
+        df (dataframe) : dataframe al que se le aplicarán las reglas de negocio.  
+        """
         self.df = df
 
     def final_sales_details(self):
+        """
+        Método que permite mantener unicamente los campos escenciales, darles un casteo definido
+        así como la aplicación de agrupaciones o transformaciones necesarias para obtener el 
+        número de ventas por día por cliente. 
+        """
         try:
             self.df = (
                 self.df.withColumn(
