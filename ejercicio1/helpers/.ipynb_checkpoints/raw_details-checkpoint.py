@@ -1,6 +1,3 @@
-import logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger("prueba_técnica")
 from pyspark.sql import functions as F
 
 class RawDetails:
