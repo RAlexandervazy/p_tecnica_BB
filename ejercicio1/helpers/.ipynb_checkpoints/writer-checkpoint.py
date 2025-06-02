@@ -9,21 +9,19 @@ class Writer:
     Metodos
     processed_df() : Escribe el DataFrame en formato Parquet.
     """
-    def __init__(self, df = None):
+    def __init__(self):
         """
         Constructor de la clase
-        
-        Args:
-        -------
-        df (dataframe): Dataframe a escribir.
-        
-        """
-        self.df = df
 
-    def processed_df(self):
+        """
+    def processed_df(self, df, path):
         """
         Método que contiene la instrucción de escritura, tomará el DF recibido por el constructor
-        y lo escribirá en la carpeta processed.
+        y lo escribirá en la carpeta path.
+
+        Args:
+        df (dataframe): Dataframe a escribir.
+        path (string) : Ruta en donde será escrito el dataframe
         """
-        self.df.coalesce(1).write.mode("overwrite").parquet("processed")
-        return print("El df ha sido escrito correctamente en la carpeta 'processed'")
+        df.coalesce(1).write.mode("overwrite").parquet(path)
+        return print(f"El df ha sido escrito correctamente en la ruta {path}")
